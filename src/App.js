@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
 
+let myDate = new Date()
+let myHour = myDate.getHours().toString();
+let myMinute = myDate.getMinutes().toString();
+let mySecond = myDate.getSeconds().toString();
+
+let myTime = (mySecond.length === 1) ? (myHour + ":" + myMinute + ":0" + mySecond) : (myHour + ":" + myMinute + ":" + mySecond);
+
+let handleClick = () => {
+    myDate = new Date()
+}
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+          {myTime}
+          <div className="RefreshButton" onClick={handleClick}>Refresh</div>
+        </div>
+    );
 }
 
 export default App;
