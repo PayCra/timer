@@ -1,13 +1,13 @@
 .App {
   text-align: center;
+  width: 100vw;
+  height: 100vh;
 }
 
-.RefreshButton {
-  color: white;
+.pinkBackground {
   background: hotpink;
-  height: 30px;
-  width: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+.blueBackground {
+  background: cornflowerblue;
 }

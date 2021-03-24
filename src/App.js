@@ -1,31 +1,36 @@
 import React from "react";
 import './App.css';
 
-// let myDate = new Date()
-// let myHour = myDate.getHours().toString();
-// let myMinute = myDate.getMinutes().toString();
-// let mySecond = myDate.getSeconds().toString();
-
-// let myTime = (mySecond.length === 1) ? (myHour + ":" + myMinute + ":0" + mySecond) : (myHour + ":" + myMinute + ":" + mySecond);
-
-// let handleClick = () => {
-//     myDate = new Date()
-// }
-
 class App extends React.Component {
 
     state = {
         myDate: new Date(),
-        myHour: this.myDate.getHours().toString(),
-        myMinute: this.myDate.getMinutes().toString(),
-        mySecond: this.myDate.getSeconds().toString()
+        background: "pinkBackground",
+    }
+
+    myAudio = new Audio("soundy.mp3");
+
+    componentDidMount() {
+        this.intervalHandle = setInterval(
+            () => this.tick(),1000
+        )
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.intervalHandle)
+    }
+
+    tick = () => {
+        this.setState({myDate: new Date()})
+        if (this.state.myDate.getSeconds()>=43) {
+            this.myAudio.play()
+        }
     }
 
     render() {
         return (
-            <div className="App">
-                {this.state.myDate}
-                <div className="RefreshButton">Refresh</div>
+            <div className={"App " + this.state.background}>
+                {this.state.myDate.toString()}
             </div>
         );
     }
